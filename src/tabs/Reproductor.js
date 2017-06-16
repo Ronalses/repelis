@@ -24,9 +24,31 @@ export default class Reproductor extends Component {
 	}
 	render() {
 		let { players } = this.props.info
+
+		function findPlayerRecomended (player){
+			return player.title === 'Openload' || player.title === 'Ok.ru'
+		}
+
+		function findPlayerAlternative (player){
+			return player.title != 'Openload' || player.title != 'Ok.ru'
+		}
+		
+		function titleRecomended() {
+			if(players.find(findPlayerRecomended)){
+				return <View style={styles.containerTitle}><Text style={styles.titleRecomendado}>Recomendado</Text></View>
+			}
+		}
+
+		function titleAlternative() {
+			if(players.find(findPlayerAlternative)){
+				return <View style={styles.containerTitle}><Text style={styles.titleRecomendado}>Alternativas</Text></View>
+			}
+		}
 		return (
 			<ScrollView style={styles.container}>
-				<View style={styles.containerTitle}><Text style={styles.titleRecomendado}>Recomendado</Text></View>
+				{
+					titleRecomended()
+				}
 				{
 					players.map(player => {
 						if (player.title === 'Openload' || player.title === 'Ok.ru') {
@@ -36,8 +58,10 @@ export default class Reproductor extends Component {
 						}
 					})
 				}
-				<View style={styles.containerTitle}><Text style={styles.titleRecomendado}>Alternativas</Text></View>
 				{
+					titleAlternative()
+				}
+				{	
 					players.map(player => {
 						if (player.title != 'Openload' &&  player.title != 'Ok.ru') {
 							return (
