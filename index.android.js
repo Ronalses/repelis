@@ -1,0 +1,1 @@
+import repelis from './src/app'

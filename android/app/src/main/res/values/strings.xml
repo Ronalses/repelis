@@ -1,0 +1,4 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">aNCF--Pz97L0qn8UdKw7HJWQ3KHdEkQWSWQ-X</string>
+    <string name="app_name">Repelis</string>
+</resources>
